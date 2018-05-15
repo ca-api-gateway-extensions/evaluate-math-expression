@@ -8,22 +8,22 @@ package com.l7tech.external.custom.evaluatemathexpression;
 
 import com.l7tech.policy.assertion.ext.CustomAssertionStatus;
 import com.l7tech.policy.assertion.ext.message.CustomPolicyContext;
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.logging.Logger;
 
-import static org.mockito.Matchers.anyMapOf;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.anyMap;
+import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.when;
 
 /**
  * Test the EvaluateMathExpressionAssertion
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class EvaluateMathExpressionServiceInvocationTest {
 
     private static final Logger log = Logger.getLogger(EvaluateMathExpressionServiceInvocationTest.class.getName());
@@ -41,7 +41,7 @@ public class EvaluateMathExpressionServiceInvocationTest {
         when(mockPolicyEnforcementContext.getVariable("bb")).thenReturn("5");
         when(mockPolicyEnforcementContext.getVariable("cc")).thenReturn("8");
         when(mockPolicyEnforcementContext.getVariable("dd")).thenReturn("2");
-        when(mockPolicyEnforcementContext.expandVariable(eq("(((${aa} / ${bb}) * 8) % 2 )"), anyMapOf(String.class,Object.class))).thenReturn("(((50 / 5) * 8) % 2 )");
+        when(mockPolicyEnforcementContext.expandVariable(eq("(((${aa} / ${bb}) * 8) % 2 )"), anyMap())).thenReturn("(((50 / 5) * 8) % 2 )");
         when(mockPolicyEnforcementContext.getVariable("myoutputvariable")).thenReturn("0");
 
         evaluateMathExpressionAssertion = new EvaluateMathExpressionAssertion();
@@ -63,7 +63,7 @@ public class EvaluateMathExpressionServiceInvocationTest {
     @Test
     public void testComplex() {
         when(mockPolicyEnforcementContext.getVariable("aa")).thenReturn("90");
-        when(mockPolicyEnforcementContext.expandVariable(eq("sin( ${aa} )"), anyMapOf(String.class, Object.class))).thenReturn("sin( 90 )");
+        when(mockPolicyEnforcementContext.expandVariable(eq("sin( ${aa} )"), anyMap())).thenReturn("sin( 90 )");
         when(mockPolicyEnforcementContext.getVariable("myoutputvariable")).thenReturn("1");
 
         evaluateMathExpressionAssertion = new EvaluateMathExpressionAssertion();
@@ -83,7 +83,7 @@ public class EvaluateMathExpressionServiceInvocationTest {
     @Test
     public void testBadExpression() {
         String badExpression = "${incompleteVariable + 1";
-        when(mockPolicyEnforcementContext.expandVariable(eq(badExpression), anyMapOf(String.class, Object.class))).thenReturn(badExpression);
+        when(mockPolicyEnforcementContext.expandVariable(eq(badExpression), anyMap())).thenReturn(badExpression);
 
         evaluateMathExpressionAssertion = new EvaluateMathExpressionAssertion();
         evaluateMathExpressionAssertion.setExpression(badExpression);
@@ -100,7 +100,7 @@ public class EvaluateMathExpressionServiceInvocationTest {
     public void testDivideByZero() {
         String divideByZero = "1/${zero}";
         when(mockPolicyEnforcementContext.getVariable("zero")).thenReturn("0");
-        when(mockPolicyEnforcementContext.expandVariable(eq(divideByZero), anyMapOf(String.class, Object.class))).thenReturn("1/0");
+        when(mockPolicyEnforcementContext.expandVariable(eq(divideByZero), anyMap())).thenReturn("1/0");
 
         evaluateMathExpressionAssertion = new EvaluateMathExpressionAssertion();
         evaluateMathExpressionAssertion.setExpression(divideByZero);
