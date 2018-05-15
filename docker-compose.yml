@@ -15,8 +15,8 @@ services:
       - "8000:8000"
     volumes:
       - /opt/SecureSpan/Gateway/node/default/etc/bootstrap/services/restman
-      - ./docker/license.xml:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/license
-      - ./build/libs:/opt/SecureSpan/Gateway/runtime/modules/lib
+      - ./docker/license.xml:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/license/license.xml
+      - ./build/libs/EvaluateMathExpressionAssertion-1.0.0.jar:/opt/SecureSpan/Gateway/runtime/modules/lib/EvaluateMathExpressionAssertion-1.0.0.jar
       - ./docker/evaluatemathexpression.req.bundle:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/bundle/evaluatemathexpression.req.bundle
     environment:
       ACCEPT_LICENSE: "true"
