@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 /**
  * Test the EvaluateMathExpressionAssertion
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class EvaluateMathExpressionServiceInvocationTest {
 
     private static final Logger log = Logger.getLogger(EvaluateMathExpressionServiceInvocationTest.class.getName());
