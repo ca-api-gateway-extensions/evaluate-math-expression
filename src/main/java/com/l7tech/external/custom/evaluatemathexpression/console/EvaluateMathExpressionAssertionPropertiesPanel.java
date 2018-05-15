@@ -131,7 +131,7 @@ public class EvaluateMathExpressionAssertionPropertiesPanel extends JDialog impl
     private void addButtons() {
         final JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new GridBagLayout());
-        addToMainPanelWithGridBagConstraints(buttonsPanel, 1, 3, 1.0, 1.0, GridBagConstraints.BOTH, GridBagConstraints.NONE);
+        addToMainPanelWithGridBagConstraints(buttonsPanel, 1, 3, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 
         okButton = new JButton();
         okButton.setText("OK");
@@ -153,7 +153,7 @@ public class EvaluateMathExpressionAssertionPropertiesPanel extends JDialog impl
 
         final JPanel precisionPanel = new JPanel();
         precisionPanel.setLayout(new GridBagLayout());
-        addToMainPanelWithGridBagConstraints(precisionPanel, 1, 2, 1.0, 0, GridBagConstraints.BOTH, GridBagConstraints.NONE);
+        addToMainPanelWithGridBagConstraints(precisionPanel, 1, 2, 1.0, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
 
         precisionField = new JSpinner();
         GridBagConstraints gbc = getGridBagConstraints(0, 0, 1.0, 1.0, GridBagConstraints.EAST, GridBagConstraints.NONE);
