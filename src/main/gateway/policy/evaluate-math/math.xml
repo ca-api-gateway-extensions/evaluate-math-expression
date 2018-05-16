@@ -1,0 +1,50 @@
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2002/12/policy" xmlns:L7p="http://www.layer7tech.com/ws/policy">
+    <wsp:All wsp:Usage="Required">
+        <L7p:SetVariable>
+            <L7p:Expression>
+                <![CDATA[${request.http.parameter.problem}]]>
+            </L7p:Expression>
+            <L7p:VariableToSet stringValue="problem"/>
+        </L7p:SetVariable>
+        <wsp:OneOrMore wsp:Usage="Required">
+            <L7p:ComparisonAssertion>
+                <L7p:CaseSensitive booleanValue="false"/>
+                <L7p:Expression1 stringValue="${problem}"/>
+                <L7p:Operator operatorNull="null"/>
+                <L7p:Predicates predicates="included">
+                    <L7p:item dataType="included">
+                        <L7p:Type variableDataType="string"/>
+                    </L7p:item>
+                    <L7p:item binary="included">
+                        <L7p:Negated booleanValue="true"/>
+                        <L7p:Operator operator="EMPTY"/>
+                        <L7p:RightValue stringValue=""/>
+                    </L7p:item>
+                </L7p:Predicates>
+            </L7p:ComparisonAssertion>
+            <L7p:SetVariable>
+                <L7p:Expression>
+                    <![CDATA[1+2]]>
+                </L7p:Expression>
+                <L7p:VariableToSet stringValue="problem"/>
+            </L7p:SetVariable>
+        </wsp:OneOrMore>
+        <wsp:OneOrMore wsp:Usage="Required">
+            <L7p:CustomAssertion>
+                <L7p:base64SerializedValue>rO0ABXNyADFjb20ubDd0ZWNoLnBvbGljeS5hc3NlcnRpb24uQ3VzdG9tQXNzZXJ0aW9uSG9sZGVyZtcreFwddTICAAlaAAxpc1VpQXV0b09wZW5MAApjYXRlZ29yaWVzdAAPTGphdmEvdXRpbC9TZXQ7TAAIY2F0ZWdvcnl0ACpMY29tL2w3dGVjaC9wb2xpY3kvYXNzZXJ0aW9uL2V4dC9DYXRlZ29yeTtMAA9jdXN0b21Bc3NlcnRpb250ADFMY29tL2w3dGVjaC9wb2xpY3kvYXNzZXJ0aW9uL2V4dC9DdXN0b21Bc3NlcnRpb247TAAUY3VzdG9tTW9kdWxlRmlsZU5hbWV0ABJMamF2YS9sYW5nL1N0cmluZztMAA9kZXNjcmlwdGlvblRleHRxAH4ABEwAD3BhbGV0dGVOb2RlTmFtZXEAfgAETAAOcG9saWN5Tm9kZU5hbWVxAH4ABEwAHnJlZ2lzdGVyZWRDdXN0b21GZWF0dXJlU2V0TmFtZXEAfgAEeHIAJWNvbS5sN3RlY2gucG9saWN5LmFzc2VydGlvbi5Bc3NlcnRpb27bX2OZPL2isQIAAloAB2VuYWJsZWRMABBhc3NlcnRpb25Db21tZW50dAAvTGNvbS9sN3RlY2gvcG9saWN5L2Fzc2VydGlvbi9Bc3NlcnRpb24kQ29tbWVudDt4cAFwAXNyABFqYXZhLnV0aWwuSGFzaFNldLpEhZWWuLc0AwAAeHB3DAAAAAI/QAAAAAAAAXNyAChjb20ubDd0ZWNoLnBvbGljeS5hc3NlcnRpb24uZXh0LkNhdGVnb3J5WrCcZaFE/jUCAAJJAAVteUtleUwABm15TmFtZXEAfgAEeHAAAAALdAAQQ3VzdG9tQXNzZXJ0aW9uc3hwc3IAUWNvbS5sN3RlY2guZXh0ZXJuYWwuY3VzdG9tLmV2YWx1YXRlbWF0aGV4cHJlc3Npb24uRXZhbHVhdGVNYXRoRXhwcmVzc2lvbkFzc2VydGlvbucFbDRNMLqzAgADSQAJcHJlY2lzaW9uTAAKZXhwcmVzc2lvbnEAfgAETAAOb3V0cHV0VmFyaWFibGVxAH4ABHhwAAAAAHQACiR7cHJvYmxlbX10AAZhbnN3ZXJ0AClFdmFsdWF0ZU1hdGhFeHByZXNzaW9uQXNzZXJ0aW9uLTEuMC4wLmphcnQAGEV2YWx1YXRlIE1hdGggRXhwcmVzc2lvbnQAGEV2YWx1YXRlIE1hdGggRXhwcmVzc2lvbnQAGEV2YWx1YXRlIE1hdGggRXhwcmVzc2lvbnA=</L7p:base64SerializedValue>
+            </L7p:CustomAssertion>
+            <L7p:SetVariable>
+                <L7p:Expression>
+                    <![CDATA[ERROR]]>
+                </L7p:Expression>
+                <L7p:VariableToSet stringValue="answer"/>
+            </L7p:SetVariable>
+        </wsp:OneOrMore>
+        <L7p:HardcodedResponse>
+            <L7p:ResponseBody>
+                <![CDATA[${problem} = ${answer}]]>
+            </L7p:ResponseBody>
+            <L7p:ResponseContentType stringValue="text/plain; charset=UTF-8"/>
+        </L7p:HardcodedResponse>
+    </wsp:All>
+</wsp:Policy>
