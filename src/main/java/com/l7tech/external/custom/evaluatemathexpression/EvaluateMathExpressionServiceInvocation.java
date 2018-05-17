@@ -20,9 +20,7 @@ import java.util.Map;
  *
  * @see EvaluateMathExpressionAssertion
  */
-public class EvaluateMathExpressionServiceInvocation extends ServiceInvocation {
-
-    private String[] variablesUsed;
+class EvaluateMathExpressionServiceInvocation extends ServiceInvocation {
 
     @Override
     public CustomAssertionStatus checkRequest(CustomPolicyContext customPolicyContext) {
@@ -32,7 +30,7 @@ public class EvaluateMathExpressionServiceInvocation extends ServiceInvocation {
 
         EvaluateMathExpressionAssertion assertion = (EvaluateMathExpressionAssertion) customAssertion;
 
-        this.variablesUsed = assertion.getVariablesUsed();
+        String[] variablesUsed = assertion.getVariablesUsed();
         Map<String, Object> vars = customPolicyContext.getVariableMap(variablesUsed);
         String expression = customPolicyContext.expandVariable(assertion.getExpression(), vars);
 

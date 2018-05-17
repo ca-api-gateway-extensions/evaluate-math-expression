@@ -10,38 +10,31 @@ import com.l7tech.external.custom.evaluatemathexpression.console.EvaluateMathExp
 import com.l7tech.policy.assertion.ext.AssertionEditor;
 import com.l7tech.policy.assertion.ext.CustomAssertion;
 import com.l7tech.policy.assertion.ext.CustomAssertionUI;
-import com.l7tech.policy.assertion.ext.cei.UsesConsoleContext;
 
 import javax.swing.*;
 import java.io.Serializable;
-import java.util.Map;
+import java.util.Objects;
 
 /**
  *
  */
-public class EvaluateMathExpressionUI implements CustomAssertionUI, UsesConsoleContext, Serializable {
-    private Map consoleContext;
+public class EvaluateMathExpressionUI implements CustomAssertionUI, Serializable {
 
     @Override
     public AssertionEditor getEditor(CustomAssertion customAssertion) {
         if(!(customAssertion instanceof EvaluateMathExpressionAssertion)) {
             throw new IllegalArgumentException(EvaluateMathExpressionAssertion.class +" type is required");
         }
-        return new EvaluateMathExpressionAssertionPropertiesPanel((EvaluateMathExpressionAssertion) customAssertion, consoleContext);
+        return new EvaluateMathExpressionAssertionPropertiesPanel((EvaluateMathExpressionAssertion) customAssertion);
     }
 
     @Override
     public ImageIcon getSmallIcon() {
-        return new ImageIcon(getClass().getClassLoader().getResource("Properties16.gif"));
+        return new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Properties16.gif")));
     }
 
     @Override
     public ImageIcon getLargeIcon() {
-        return new ImageIcon(getClass().getClassLoader().getResource("Properties16.gif"));
-    }
-
-    @Override
-    public void setConsoleContextUsed(Map map) {
-        consoleContext = map;
+        return new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Properties16.gif")));
     }
 }

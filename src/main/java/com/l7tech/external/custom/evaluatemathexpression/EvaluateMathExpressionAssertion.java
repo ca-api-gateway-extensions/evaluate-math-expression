@@ -23,8 +23,7 @@ public class EvaluateMathExpressionAssertion implements CustomAssertion, UsesVar
     private int precision = 0;
 
     /**
-     * The name
-     * @return
+     * @return The name
      */
     @Override
     public String getName() {
