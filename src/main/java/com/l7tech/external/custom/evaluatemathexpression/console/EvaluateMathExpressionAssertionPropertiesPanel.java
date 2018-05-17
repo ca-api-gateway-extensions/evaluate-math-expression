@@ -15,9 +15,6 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Map;
 
 /**
  *
@@ -30,16 +27,14 @@ public class EvaluateMathExpressionAssertionPropertiesPanel extends JDialog impl
     private JButton cancelButton;
     private JPanel mainPanel;
 
-    private EvaluateMathExpressionAssertion assertion;
-    private AssertionEditorSupport editorSupport;
-    private Map consoleContext;
+    private final EvaluateMathExpressionAssertion assertion;
+    private final transient AssertionEditorSupport editorSupport;
 
-    public EvaluateMathExpressionAssertionPropertiesPanel(EvaluateMathExpressionAssertion assertion, Map consoleContext) {
+    public EvaluateMathExpressionAssertionPropertiesPanel(EvaluateMathExpressionAssertion assertion) {
         super(Frame.getFrames().length > 0 ? Frame.getFrames()[0] : null, true);
         this.setTitle("Evaluate Math Assertion Properties");
         this.assertion = assertion;
         this.editorSupport = new AssertionEditorSupport(this);
-        this.consoleContext = consoleContext;
         addComponents();
         this.init();
         enableDisableOkButton();
@@ -67,7 +62,7 @@ public class EvaluateMathExpressionAssertionPropertiesPanel extends JDialog impl
     private void viewToModel(EvaluateMathExpressionAssertion assertion) {
         assertion.setExpression(expressionField.getText().trim());
         assertion.setOutputVariable(outputVariableField.getText().trim());
-        assertion.setPrecision(((Integer) precisionField.getValue()).intValue());
+        assertion.setPrecision((Integer) precisionField.getValue());
     }
 
     private void modelToView(EvaluateMathExpressionAssertion assertion) {
@@ -82,18 +77,14 @@ public class EvaluateMathExpressionAssertionPropertiesPanel extends JDialog impl
         outputVariableField.getDocument().addDocumentListener(getDocumentListener());
         precisionField.setModel(new SpinnerNumberModel(0, 0, 16, 1));
 
-        okButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                viewToModel(assertion);
-                editorSupport.fireEditAccepted(assertion);
-                dispose();
-            }
+        okButton.addActionListener(e -> {
+            viewToModel(assertion);
+            editorSupport.fireEditAccepted(assertion);
+            dispose();
         });
-        cancelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                editorSupport.fireCancelled(assertion);
-                dispose();
-            }
+        cancelButton.addActionListener(e -> {
+            editorSupport.fireCancelled(assertion);
+            dispose();
         });
     }
 

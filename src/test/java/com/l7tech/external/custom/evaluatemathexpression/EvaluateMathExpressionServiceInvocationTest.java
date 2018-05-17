@@ -32,7 +32,7 @@ public class EvaluateMathExpressionServiceInvocationTest {
     private EvaluateMathExpressionServiceInvocation serverEvaluateMathExpressionAssertion;
     
     @Mock
-    CustomPolicyContext mockPolicyEnforcementContext ;
+    private CustomPolicyContext mockPolicyEnforcementContext ;
 
     @Test
     public void testSimple() {
