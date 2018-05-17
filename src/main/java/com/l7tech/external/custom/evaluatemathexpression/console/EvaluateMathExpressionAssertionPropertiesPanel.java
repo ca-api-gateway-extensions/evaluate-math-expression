@@ -19,7 +19,7 @@ import java.awt.*;
 /**
  *
  */
-public class EvaluateMathExpressionAssertionPropertiesPanel extends Dialog implements AssertionEditor {
+public class EvaluateMathExpressionAssertionPropertiesPanel extends JDialog implements AssertionEditor {
     private JTextField expressionField;
     private JTextField outputVariableField;
     private JSpinner precisionField;
