@@ -20,7 +20,7 @@ import java.util.Map;
  *
  * @see EvaluateMathExpressionAssertion
  */
-class EvaluateMathExpressionServiceInvocation extends ServiceInvocation {
+public class EvaluateMathExpressionServiceInvocation extends ServiceInvocation {
 
     @Override
     public CustomAssertionStatus checkRequest(CustomPolicyContext customPolicyContext) {
