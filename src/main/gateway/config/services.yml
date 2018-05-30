@@ -1,0 +1,7 @@
+evaluate-math/math.xml:
+  url: "/math"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"

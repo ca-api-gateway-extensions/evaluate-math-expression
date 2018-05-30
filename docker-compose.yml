@@ -17,7 +17,7 @@ services:
       - /opt/SecureSpan/Gateway/node/default/etc/bootstrap/services/restman
       - ./docker/license.xml:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/license/license.xml
       - ./build/libs/EvaluateMathExpressionAssertion-1.0.0.jar:/opt/SecureSpan/Gateway/runtime/modules/lib/EvaluateMathExpressionAssertion-1.0.0.jar
-      - ./docker/evaluatemathexpression.req.bundle:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/bundle/evaluatemathexpression.req.bundle
+      - ./build/gateway/evaluate-math-expression.bundle:/opt/SecureSpan/Gateway/node/default/etc/bootstrap/bundle/evaluate-math-expression.req.bundle
     environment:
       ACCEPT_LICENSE: "true"
       SSG_ADMIN_USERNAME: "admin"
