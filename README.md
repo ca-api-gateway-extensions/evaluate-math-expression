@@ -1,7 +1,7 @@
 # About
  
 # Build
-In order to build the modular assertion run `gradle build`.
+In order to build the modular assertion run `./gradlew clean build`
  
 This will compile, test, and create the jar file. It will be available in `build/libs`
  
